@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
-const Todo = ({ todo }) => <div className="todo">{todo.text}</div>
+import Todo from './components/Todo.jsx';
+import Form from './components/Form.jsx';
 
 const App = () => {
     const [ todos, setTodo ] = useState([
@@ -9,9 +9,11 @@ const App = () => {
         { text: 'Third Thing' }
     ]);
 
-
     return (
         <div className="app">
+            <Form
+                addTodo={setTodo}
+            />
             <div className="todo-list">
                 {todos.map((todo, index) => (
                     <Todo
