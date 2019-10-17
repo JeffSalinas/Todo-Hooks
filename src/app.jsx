@@ -3,17 +3,29 @@ import Todo from './components/Todo.jsx';
 import Form from './components/Form.jsx';
 
 const App = () => {
-    const [ todos, setTodo ] = useState([
-        { text: 'First Thing' },
-        { text: 'Next Thing' },
-        { text: 'Third Thing' }
+    const [ todos, setTodos ] = useState([
+        { 
+            text: 'First Thing',
+            isCompleted: false 
+        },
+        { 
+            text: 'Next Thing',
+            isCompleted: false  
+        },
+        { 
+            text: 'Third Thing',
+            isCompleted: false  
+        }
     ]);
+
+    const addTodo = text => {
+        const newTodos = [...todos, { text }]
+        console.log(temp)
+        setTodos(newTodos);
+    }
 
     return (
         <div className="app">
-            <Form
-                addTodo={setTodo}
-            />
             <div className="todo-list">
                 {todos.map((todo, index) => (
                     <Todo
@@ -22,9 +34,12 @@ const App = () => {
                         todo={todo}
                     />
                 ))}
+                <Form
+                    addTodo={addTodo} 
+                />
             </div>
         </div>
     )
-}
+};
 
 export default App;
